@@ -48,6 +48,10 @@ jobs:
       - name: Remove old systemd service file
         run: |
           ssh -i deploy_key.pem -o StrictHostKeyChecking=no ${{ env.HOST }} "rm -f /etc/systemd/system/url-shortener.service"
+      - name: Debug workspace contents
+        run: |
+          echo "Listing workspace contents:"
+          ls -la ${{ github.workspace }}
       - name: List workspace contents
         run: |
           echo "Listing deployment folder contents:"
