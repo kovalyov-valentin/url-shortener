@@ -3,16 +3,16 @@ package main
 import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/kovalyov-valentin/url-shortener/internal/config"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/delete"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/redirect"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/save"
-	mwLogger "github.com/kovalyov-valentin/url-shortener/internal/http-server/middleware/logger"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/logger/sl"
-	"github.com/kovalyov-valentin/url-shortener/internal/storage/sqlite"
 	"log/slog"
 	"net/http"
 	"os"
+	"url-shortener/internal/config"
+	"url-shortener/internal/http-server/handlers/url/delete"
+	"url-shortener/internal/http-server/handlers/url/redirect"
+	"url-shortener/internal/http-server/handlers/url/save"
+	mwLogger "url-shortener/internal/http-server/middleware/logger"
+	"url-shortener/internal/lib/logger/sl"
+	"url-shortener/internal/storage/sqlite"
 )
 
 const (

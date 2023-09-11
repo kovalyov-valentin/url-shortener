@@ -5,12 +5,12 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/render"
 	"github.com/go-playground/validator/v10"
-	resp "github.com/kovalyov-valentin/url-shortener/internal/lib/api/response"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/logger/sl"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/random"
-	"github.com/kovalyov-valentin/url-shortener/internal/storage"
 	"log/slog"
 	"net/http"
+	resp "url-shortener/internal/lib/api/response"
+	"url-shortener/internal/lib/logger/sl"
+	"url-shortener/internal/lib/random"
+	"url-shortener/internal/storage"
 )
 
 type Request struct {

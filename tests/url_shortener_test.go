@@ -3,13 +3,13 @@ package tests
 import (
 	"github.com/brianvoe/gofakeit/v6"
 	"github.com/gavv/httpexpect/v2"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/save"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/api"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/random"
 	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/url"
 	"testing"
+	"url-shortener/internal/http-server/handlers/url/save"
+	"url-shortener/internal/lib/api"
+	"url-shortener/internal/lib/random"
 )
 
 const (

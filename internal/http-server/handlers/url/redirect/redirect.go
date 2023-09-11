@@ -5,11 +5,11 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/render"
-	resp "github.com/kovalyov-valentin/url-shortener/internal/lib/api/response"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/logger/sl"
-	"github.com/kovalyov-valentin/url-shortener/internal/storage"
 	"log/slog"
 	"net/http"
+	resp "url-shortener/internal/lib/api/response"
+	"url-shortener/internal/lib/logger/sl"
+	"url-shortener/internal/storage"
 )
 
 //go:generate go run github.com/vektra/mockery/v2@v2.28.2 --name=URLGetter
