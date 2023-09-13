@@ -1,11 +1,15 @@
 package main
 
 import (
+	"context"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
+	"time"
 	"url-shortener/internal/config"
 	"url-shortener/internal/http-server/handlers/url/delete"
 	"url-shortener/internal/http-server/handlers/url/redirect"
@@ -57,9 +61,6 @@ func main() {
 	//	log.Error("failed to save url", sl.Err(err))
 	//	os.Exit(1)
 	//}
-	//
-
-	_ = storage
 
 	// TODO: init router: chi, "chi render"
 	router := chi.NewRouter()
@@ -88,6 +89,9 @@ func main() {
 
 	log.Info("starting server", slog.String("address", cfg.Address))
 
+	done := make(chan os.Signal, 1)
+	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+
 	srv := &http.Server{
 		Addr:         cfg.Address,
 		Handler:      router,
@@ -97,11 +101,27 @@ func main() {
 	}
 
 	// TODO: run server
-	if err := srv.ListenAndServe(); err != nil {
-		log.Error("failed ti start server")
+	go func() {
+		if err := srv.ListenAndServe(); err != nil {
+			log.Error("failed ti start server")
+		}
+	}()
+
+	log.Info("server started")
+
+	<-done
+	log.Info("stopping server")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := srv.Shutdown(ctx); err != nil {
+		log.Error("failed to stop server", sl.Err(err))
+
+		return
 	}
 
-	log.Error("server stopped")
+	log.Info("server stopped")
 }
 
 func setupLogger(env string) *slog.Logger {
