@@ -36,6 +36,7 @@ type URLSaver interface {
 // которая возвращает хэндлер и здесь мы можем передать какие то дополнительные параметры,
 // которые будут установлены в каждом обработчике
 func New(log *slog.Logger, urlSaver URLSaver) http.HandlerFunc {
+	// Функция, которая вызывается при каждом запросе
 	return func(w http.ResponseWriter, r *http.Request) {
 		const op = "handlers.url.save.New"
 
