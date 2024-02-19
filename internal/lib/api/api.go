@@ -25,11 +25,11 @@ func GetRedirect(url string) (string, error) {
 		return "", err
 	}
 
+	defer func() { _ = resp.Body.Close() }()
+
 	if resp.StatusCode != http.StatusFound {
 		return "", fmt.Errorf("%s: %w: %d", op, ErrInvalidStatusCode, resp.StatusCode)
 	}
-
-	defer func() { _ = resp.Body.Close() }()
 
 	return resp.Header.Get("Location"), nil
 }

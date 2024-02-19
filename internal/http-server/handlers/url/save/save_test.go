@@ -5,14 +5,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/save"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/save/mocks"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/logger/handlers/slogdiscard"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"url-shortener/internal/http-server/handlers/url/save"
+	"url-shortener/internal/http-server/handlers/url/save/mocks"
+	"url-shortener/internal/lib/logger/handlers/slogdiscard"
 )
 
 func TestSaveHandler(t *testing.T) {
