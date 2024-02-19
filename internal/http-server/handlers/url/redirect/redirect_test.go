@@ -2,14 +2,14 @@ package redirect_test
 
 import (
 	"github.com/go-chi/chi/v5"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/redirect"
-	"github.com/kovalyov-valentin/url-shortener/internal/http-server/handlers/url/redirect/mocks"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/api"
-	"github.com/kovalyov-valentin/url-shortener/internal/lib/logger/handlers/slogdiscard"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"net/http/httptest"
 	"testing"
+	"url-shortener/internal/http-server/handlers/url/redirect"
+	"url-shortener/internal/http-server/handlers/url/redirect/mocks"
+	"url-shortener/internal/lib/api"
+	"url-shortener/internal/lib/logger/handlers/slogdiscard"
 )
 
 func TestRedirectHandler(t *testing.T) {
